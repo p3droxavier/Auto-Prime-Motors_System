@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <link rel="stylesheet" href="./../../static/register/style.css">
+  <title>Cadastro</title>
+</head>
+
+<body>
+  <div class="row-12 container">
+    <div class="col-md-5">
+      <div class="card border-0">
+        <div class="row">
+          <div class="col-12">
+            <h4 class="fw-bold">Faça o seu cadastro com seus dados</h4>
+          </div>
+          <!-- Formulário -->
+          <form class="form-control border-0">
+            <div class="card-body">
+              <!-- Nome do Funcionário -->
+              <div class="row mb-3">
+                <div class="col-4">
+                  <label for="firstName" class="fw-bold">Nome: </label>
+                </div>
+                <div class="col-8">
+                  <input type="text" id="firstName" name="firstName" class="formStyle form-control rounded-pill"
+                    required>
+                </div>
+              </div>
+              <!-- Documento do Funcionário -->
+              <div class="row mb-3">
+                <div class="col-4">
+                  <label for="document" class="fw-bold">Documento: </label>
+                </div>
+                <div class="col-8">
+                  <input type="text" id="document" name="document"
+                    class="formStyle no-spinners form-control rounded-pill" placeholder="000.000.000-00" required>
+                </div>
+              </div>
+              <!-- Cargo do Funcionário -->
+              <div class="row mb-3">
+                <div class="col-4">
+                  <label for="email" class="fw-bold">Cargo: </label>
+                </div>
+                <div class="col-8">
+                  <input type="cargo" id="cargo" name="cargo" class="formStyle form-control rounded-pill" required>
+                </div>
+              </div>
+              <!-- Setor do Funcionário -->
+              <div class="row mb-3">
+                <div class="col-4">
+                  <label for="setor" class="fw-bold">Setor: </label>
+                </div>
+                <div class="col-8">
+                  <input type="number" id="setor" name="setor" class="formStyle form-control rounded-pill" required>
+                </div>
+              </div>
+              <!-- Data de admição do Funcionário-->
+              <div class="row mb-3">
+                <div class="col-4">
+                  <label for="data_admicao" class="fw-bold">Data de Admição: </label>
+                </div>
+                <div class="col-8">
+                  <input type="date" id="data_admicao" name="data_admicao" class="formStyle form-control rounded-pill" required>
+                </div>
+              </div>
+              <!-- Sálario do Funcionário-->
+              <div class="row mb-3">
+                <div class="col-4">
+                  <label for="salario" class="fw-bold">Sálario: </label>
+                </div>
+                <div class="col-8">
+                  <input type="number" id="salario" name="salario" class="formStyle form-control rounded-pill" required>
+                </div>
+              </div>
+              <!-- Endereço do Funcionário -->
+              <div class="row mb-3">
+                <div class="col-4">
+                  <label for="endereço" class="fw-bold">Endereço: </label>
+                </div>
+                <div class="col-8">
+                  <input type="text" id="endereço" name="endereço" class="formStyle form-control rounded-pill" required>
+                </div>
+              </div>
+              <!-- Contato do Funcionário -->
+              <div class="row mb-3">
+                <div class="col-4">
+                  <label for="contato" class="fw-bold">Contato: </label>
+                </div>
+                <div class="col-8">
+                  <input type="number" id="contato" name="contato" class="formStyle form-control rounded-pill" required>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="row pt-3">
+          <div class="col-12 text-center">
+            <button type="submit" form="form" class="btn btn-primary btn-lg w-100 rounded-pill">Enviar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+    crossorigin="anonymous"></script>
+</body>
+
+</html>
