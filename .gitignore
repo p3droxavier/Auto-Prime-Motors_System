@@ -1,0 +1,72 @@
+----------------------------------------------------------------GIT IGNORE----------------------------------------------------------------------------
+# -------------------
+# PYTHON / FLASK
+# -------------------
+
+# Ambientes virtuais
+.venv/
+venv/
+
+# Cache do Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyc
+
+# Logs
+*.log
+
+# Bancos de dados locais
+*.db
+*.sqlite3
+
+# Distribuição/instalação
+*.egg-info/
+.eggs/
+build/
+dist/
+
+# Testes
+htmlcov/
+coverage.xml
+
+# -------------------
+# NODE / BOOTSTRAP
+# -------------------
+
+# Dependências do Node.js
+node_modules/
+
+# Arquivos de lock (opcional ignorar)
+package-lock.json
+yarn.lock
+
+# Diretórios de build do front-end (caso use)
+build/
+dist/
+
+# -------------------
+# IDEs e SISTEMA
+# -------------------
+
+# Configurações de IDEs
+.vscode/
+.idea/
+
+# Arquivos de sistema
+.DS_Store
+Thumbs.db
+
+# -------------------
+# OUTROS
+# -------------------
+
+# Dumps e backups de banco
+*.sql
+*.sql.gz
+*.dump
+
+# Arquivos temporários
+*.tmp
+*.swp
+--------------------------------------------------------------------------------------------------------------------------------------------------------
