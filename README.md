@@ -1,12 +1,22 @@
-# Meu Projeto Flask
+# Auto Prime Motors System 🚗
 
-## Requisitos
+Sistema web desenvolvido com Flask para gerenciar funcionalidades da Auto Prime Motors.
 
-- Python 3.x
+---
 
-## Passos para rodar
+## ✅ Requisitos
 
-1. Clone o repositório:
-   ```bash
-   git clone https://github.com/p3droxavier/Auto-Prime-Motors_System.git
-   cd seuprojeto
+- Python 3.8 ou superior
+- Git
+
+---
+
+## 🚀 Como rodar o projeto
+
+Siga os passos abaixo para clonar o projeto e executá-lo localmente:
+
+### 1. Clone o repositório
+
+```bash
+git clone https://github.com/p3droxavier/Auto-Prime-Motors_System.git
+cd Auto-Prime-Motors_System
