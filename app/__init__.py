@@ -4,11 +4,10 @@ from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager
 from dotenv import load_dotenv
+from app.database import db
 import os
 
-from app.database import db
 
-db = SQLAlchemy()
 
 login_manager = LoginManager()
 

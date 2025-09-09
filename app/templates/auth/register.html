@@ -19,32 +19,40 @@
             <h4 class="fw-bold">Faça o seu cadastro com seus dados</h4>
           </div>
           <!-- Formulário -->
-          <form class="form-control border-0">
+          <form class="form-control border-0" method="POST" action={{ url_for('auth.register') }}>
             <div class="card-body">
               <!-- Nome do Funcionário -->
               <div class="row mb-3">
                 <div class="col-4">
-                  <label for="firstName" class="fw-bold">Nome: </label>
+                  <label for="nome" class="fw-bold">Nome: </label>
                 </div>
                 <div class="col-8">
-                  <input type="text" id="firstName" name="firstName" class="formStyle form-control rounded-pill"
-                    required>
+                  <input type="text" id="nome" name="nome" class="formStyle form-control rounded-pill" required>
+                </div>
+              </div>
+              <!-- Email do Funcionário -->
+              <div class="row mb-3">
+                <div class="col-4">
+                  <label for="firstName" class="fw-bold">Email: </label>
+                </div>
+                <div class="col-8">
+                  <input type="email" id="email" name="email" class="formStyle form-control rounded-pill" required>
                 </div>
               </div>
               <!-- Documento do Funcionário -->
               <div class="row mb-3">
                 <div class="col-4">
-                  <label for="document" class="fw-bold">Documento: </label>
+                  <label for="cpf" class="fw-bold">Documento: </label>
                 </div>
                 <div class="col-8">
-                  <input type="text" id="document" name="document"
-                    class="formStyle no-spinners form-control rounded-pill" placeholder="000.000.000-00" required>
+                  <input type="text" id="cpf" name="cpf" class="formStyle no-spinners form-control rounded-pill"
+                    placeholder="000.000.000-00" required>
                 </div>
               </div>
               <!-- Cargo do Funcionário -->
               <div class="row mb-3">
                 <div class="col-4">
-                  <label for="email" class="fw-bold">Cargo: </label>
+                  <label for="cargo" class="fw-bold">Cargo: </label>
                 </div>
                 <div class="col-8">
                   <input type="cargo" id="cargo" name="cargo" class="formStyle form-control rounded-pill" required>
@@ -56,16 +64,16 @@
                   <label for="setor" class="fw-bold">Setor: </label>
                 </div>
                 <div class="col-8">
-                  <input type="number" id="setor" name="setor" class="formStyle form-control rounded-pill" required>
+                  <input type="text" id="setor" name="setor" class="formStyle form-control rounded-pill" required>
                 </div>
               </div>
               <!-- Data de admição do Funcionário-->
               <div class="row mb-3">
                 <div class="col-4">
-                  <label for="data_admicao" class="fw-bold">Data de Admição: </label>
+                  <label for="data_admissao" class="fw-bold">Data de Admição: </label>
                 </div>
                 <div class="col-8">
-                  <input type="date" id="data_admicao" name="data_admicao" class="formStyle form-control rounded-pill"
+                  <input type="date" id="data_admissao" name="data_admissao" class="formStyle form-control rounded-pill"
                     required>
                 </div>
               </div>
@@ -81,29 +89,50 @@
               <!-- Endereço do Funcionário -->
               <div class="row mb-3">
                 <div class="col-4">
-                  <label for="endereço" class="fw-bold">Endereço: </label>
+                  <label for="endereco" class="fw-bold">Endereço: </label>
                 </div>
                 <div class="col-8">
-                  <input type="text" id="endereço" name="endereço" class="formStyle form-control rounded-pill" required>
+                  <input type="text" id="endereco" name="endereco" class="formStyle form-control rounded-pill" required>
                 </div>
               </div>
               <!-- Contato do Funcionário -->
               <div class="row mb-3">
                 <div class="col-4">
-                  <label for="contato" class="fw-bold">Contato: </label>
+                  <label for="telefone" class="fw-bold">Contato: </label>
                 </div>
                 <div class="col-8">
-                  <input type="number" id="contato" name="contato" class="formStyle form-control rounded-pill" required>
+                  <input type="tel" id="telefone" name="telefone" class="formStyle form-control rounded-pill" required>
+                </div>
+              </div>
+              <!-- Foto do Funcionário -->
+              <!-- OBS: Fazer com que quando for cliacado ele busque do dispositivo da pessoa -->
+              <div class="row mb-3">
+                <div class="col-4">
+                  <label for="senha" class="fw-bold">Foto: </label>
+                </div>
+                <div class="col-8">
+                  <input type="text" name="foto" placeholder="URL da foto" class="formStyle form-control rounded-pill">
+                </div>
+              </div>
+              <!-- Senha do Funcionário -->
+              <!-- Fazer com que a pessoa consoga ver sua senha -->
+              <div class="row mb-3">
+                <div class="col-4">
+                  <label for="contato" class="fw-bold">Senha: </label>
+                </div>
+                <div class="col-8">
+                  <input type="password" name="senha" class="formStyle form-control rounded-pill">
+                </div>
+              </div>
+              <div class="row pt-3">
+                <div class="col-12 text-center">
+                  <button type="submit" class="btn btn-primary btn-lg w-100 rounded-pill">Cadastrar</button>
                 </div>
               </div>
             </div>
           </form>
         </div>
-        <div class="row pt-3">
-          <div class="col-12 text-center">
-            <button type="submit" form="form" class="btn btn-primary btn-lg w-100 rounded-pill">Enviar</button>
-          </div>
-        </div>
+
       </div>
     </div>
   </div>

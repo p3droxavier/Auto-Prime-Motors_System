@@ -15,6 +15,7 @@ class Funcionario(db.Model, UserMixin):
   telefone = db.Column(db.String(15), nullable=True)
   email = db.Column(db.String(100), unique=True, nullable=False)
   foto = db.Column(db.String(255), nullable=True)
+  senha = db.Column(db.String(128), nullable=False)
   
   def __repr__(self):
     return f'<Funcionario {self.nome}>'
