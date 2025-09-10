@@ -1,5 +1,6 @@
 from app.database import db
 from flask_login import UserMixin
+import bcrypt
 
 class Funcionario(db.Model, UserMixin):
   __tablename__ = 'funcionarios'
@@ -19,3 +20,6 @@ class Funcionario(db.Model, UserMixin):
   
   def __repr__(self):
     return f'<Funcionario {self.nome}>'
+  
+  def verificar_senha(self, senha_digitada):
+    return bcrypt.checkpw(senha_digitada.encode('utf-8'), self.senha.encode('utf-8'))

@@ -15,7 +15,8 @@ class RegisterSchema(Schema):
   
   
 class LoginSchema(Schema):
-  email = fields.Email(required=True)
-  senha = fields.Str(required=True)
+  nome = fields.Str(required=True, validate=validate.Length(min=5))
+  cpf = fields.Str(required=True, validate=validate.Length(equal=11))
   cargo = fields.Str(required=True)
   setor = fields.Str(required=True)
+  senha = fields.Str(required=True, validate=validate.Length(min=5))

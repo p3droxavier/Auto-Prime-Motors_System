@@ -6,11 +6,8 @@ from flask_login import LoginManager
 from dotenv import load_dotenv
 from app.database import db
 import os
-
-
-
-login_manager = LoginManager()
-
+ 
+ 
 def create_app():
     load_dotenv()
 
@@ -20,6 +17,7 @@ def create_app():
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
     db.init_app(app)
+    login_manager = LoginManager()
     login_manager.init_app(app)
     login_manager.login_view = 'auth.login'
     
