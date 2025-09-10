@@ -5,6 +5,7 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager
 from dotenv import load_dotenv
 from app.database import db
+from app.auth.routes import fake_admin
 import os
  
  
@@ -26,13 +27,20 @@ def create_app():
 
     @login_manager.user_loader
     def load_user(user_id):
+        # Se for admin fixo
+        if str(user_id) == str(fake_admin.id):
+            return fake_admin
+        
+        # Se for funcionario do banco 
         return Funcionario.query.get(int(user_id))
 
     # Blueprints
     from app.auth.routes import auth_bp
-    from app.dashboard.routes import dashboard_bp
-
+    from app.dashboard.funcionario_routes import dashboard_bp
+    from app.dashboard.admin_routes import admin_dashboard_bp
+    
     app.register_blueprint(auth_bp, url_prefix='/auth')
     app.register_blueprint(dashboard_bp, url_prefix='/dashboard')
+    app.register_blueprint(admin_dashboard_bp, url_prefix='/dashboard')
 
     return app
