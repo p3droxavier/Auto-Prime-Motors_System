@@ -12,6 +12,7 @@
 
 <body>
 
+  <!-- PopUp de sucesso ao cadastrar -->
   <div class="position-fixed top-0 start-50 translate-middle-x mt-4" style="z-index: 9999">
     {% with messages = get_flashed_messages(with_categories=true) %}
     {% if messages %}
@@ -30,6 +31,8 @@
     {% endif %}
     {% endwith %}
   </div>
+
+  <!--  -->
   <div class="row-12 container">
     <div class="col-md-5">
       <div class="card border-0">
@@ -78,7 +81,7 @@
                 </div>
               </div>
               <!-- Senha do Funcionário -->
-              <!-- Fazer com que a pessoa consoga ver sua senha -->
+              <!-- Fazer com que o funcionario consiga ver sua senha -->
               <div class="row mb-3">
                 <div class="col-4">
                   <label for="senha" class="fw-bold">Senha: </label>
