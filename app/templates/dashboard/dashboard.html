@@ -1,14 +1,136 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Boxicons -->
+  <link href='https://cdn.boxicons.com/fonts/basic/boxicons.min.css' rel='stylesheet'>
+  <link href='https://cdn.boxicons.com/fonts/brands/boxicons-brands.min.css' rel='stylesheet'>
+
+  <!-- Caminho CSS -->
+  <link rel="stylesheet" href="./../../static/funcionario_dashboard/css/style.css">
   <title>Deshboard</title>
 </head>
 
 <body>
-  <p>Dashboard Aqui</p>
+
+  <!-- SIDEBAR -->
+  <section id="sidebar">
+    <a href="#" class="brand">
+      <i class='bxr bx-home'></i>
+      <span class="text">Auto Prime Motors</span>
+    </a>
+    <!-- Itens da Sidebar - Menu Funcionario -->
+    <ul class="side-menu top">
+      <li class="active">
+        <a href="#">
+          <!-- Boxicon -->
+          <l class="bxr bxs-dashboard"></l>
+          <span class="text">Dashboard</span>
+        </a>
+      </li>
+      <li>
+        <a href="#">
+          <!-- Boxicon -->
+          <i class='bxr  bx-file-search'></i>
+          <span class="text">Meus Dados</span>
+        </a>
+      </li>
+      <li>
+        <a href="#">
+          <!-- Boxicon -->
+          <i class='bxr  bx-clipboard'></i>
+          <span class="text">Tarefas</span>
+        </a>
+      </li>
+    </ul>
+
+    <!-- Itens da Sidebar - Configurações -->
+    <ul class="side-menu">
+      <li>
+        <a href="#">
+          <!-- Boxicon -->
+          <i class='bxr  bx-cog'></i>
+          <span class="text">Setting</span>
+        </a>
+      </li>
+      <li>
+        <a href="#" class="logout">
+          <!-- Boxicon -->
+          <i class='bxr  bx-arrow-out-left-square-half'></i>
+          <span class="text">Logout</span>
+        </a>
+      </li>
+    </ul>
+  </section>
+  <!-- SIDE BAR -->
+
+
+  <!-- CONTENT -->
+  <section id="content">
+    <!-- NAVBAR -->
+    <nav>
+      <i class='bxr  bx-menu-wider'></i>
+      <!-- ===O NOME AQUI O NOME DO FUNCIONARIO VIRA DO BANCO DE DADOS DE FORMA DINAMICA===-->
+      <a href="#" class="nav-link">Funcionários</a>
+      <!-- ==========================================================-->
+
+      <form action="#">
+        <div class="form-input">
+          <input type="search" placeholder="Escolha...">
+          <button type="submit" class="search-btn"><i class='bxr bx-search'></i></button>
+        </div>
+      </form>
+      <a href="#" class="notification">
+        <i class="bxr bxs-bell"></i>
+        <!-- ===POODE SER MUDADO DINAMICAMENTE CONFORME O FUNCIONARIO RECEBA DEMANDA=== -->
+        <span class="num">2</span>
+        <!-- ========================================================================== -->
+      </a>
+
+      <!-- ===A FOTO AQUI VIRA DO BANCO DE DADOS DE FORMA DINAMICA===-->
+      <a href="#" class="imgFuncionario">
+        <img src="{{ url_for('static', filename='teste.png') }}" alt="img Teste">
+      </a>
+      <!-- ===========================================================-->
+
+
+    </nav>
+    <!-- NAVBAR -->
+
+
+    <!-- MAIN -->
+    <main>
+      <div class="head-title">
+        <div class="left">
+          <h1>Dashboard</h1>
+          <ul class="breadcrum">
+            <li>
+              <a href="#">Dashboard</a>
+            </li>
+            <li>
+              <i class="bxr bx-chevron-right"></i>
+            </li>
+            <li>
+              <a class="active" href="#">Home</a>
+            </li>
+          </ul>
+        </div>
+        <a href="#" class="btn-download">
+          <i class='bxr  bx-arrow-out-down-square-half'></i>
+          <span class="text">Download PDF</span>
+        </a>
+      </div>
+    </main>
+    <!-- MAIN -->
+  </section>
+  <!-- CONTENT -->
+
+
+  <!-- Forma correta de referenciar arquivo na pasta static no Flask -->
+  <script src="{{ url_for('static', filename='funcionario_dashboard/js/script.js') }}"></script>
 </body>
 
 </html>
