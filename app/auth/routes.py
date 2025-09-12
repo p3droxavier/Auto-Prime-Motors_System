@@ -1,5 +1,5 @@
 from flask import Blueprint, render_template, request, flash, redirect, url_for, session
-from flask_login import login_user, UserMixin
+from flask_login import login_user, UserMixin, logout_user
 from app.auth.schemas import RegisterSchema 
 from app.auth.services import cadastrar_funcionario
 from app.database.models.funcionario import Funcionario
@@ -132,4 +132,11 @@ def login():
     flash('Dados Incorretos. Verifique as informações digitadas...')
     return redirect(url_for('auth.login'))
   
+  return render_template('auth/login.html')
+
+
+# Sera chamado na dashboard para logout
+@auth_bp.route("/logout")
+def logout():
+  logout_user()
   return render_template('auth/login.html')
