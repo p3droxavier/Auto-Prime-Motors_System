@@ -83,9 +83,13 @@
         <!-- ========================================================================== -->
       </a>
 
-      <!-- ===A FOTO AQUI VIRA DO BANCO DE DADOS DE FORMA DINAMICA===-->
+      <!-- Foto do funcionario vinda do banco-->
       <a href="#" class="imgFuncionario">
-        <img src="{{ url_for('static', filename='teste.png') }}" alt="img Teste">
+        {% if funcionario.foto %}
+        <img src="{{ url_for('static', filename='uploads/' ~ funcionario.foto) }}" alt="img Teste">
+        {% else %}
+        <img src="{{ url_for('static', filename='teste.png') }}" alt="Foto indisponivel">
+        {% endif %}
       </a>
       <!-- ===========================================================-->
 

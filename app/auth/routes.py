@@ -33,15 +33,22 @@ fake_admin = AdminUser(
   senha="admin01",
   is_admin=True
 )
+# ========================
 
 
-
+# Coleta os dados da requisição e envia para a service
 # Rota para o formulário de cadastro (register)
 @auth_bp.route('/register', methods=["GET", "POST"])
 def register():
   if request.method == "POST":
     print("Formulario recebido")
     print(request.form.to_dict())
+    
+    
+    # Capturando a foto do funcionário
+    form_data = request.form.to_dict()
+    foto = request.files.get("foto") # <- Imagem recebida aqui
+    
     
     form_data = request.form.to_dict()
     
@@ -63,7 +70,11 @@ def register():
     # fazer a verificação de duplicidade de dados unicos, como CPF, E-MAIL e TEFEFONE 
     try:
       validated_data = schema.load(form_data)
-      cadastrar_funcionario(validated_data)
+      
+      # Passando a foto separadamente
+      cadastrar_funcionario(validated_data, foto)
+      
+      
       flash("Funcionario cadastrado com sucesso!", "success")
       return redirect(url_for('auth.login'))
     except Exception as e:

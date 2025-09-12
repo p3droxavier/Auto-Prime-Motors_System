@@ -20,7 +20,7 @@
             <h4 class="fw-bold">Faça o seu cadastro com seus dados</h4>
           </div>
           <!-- Formulário -->
-          <form class="form-control border-0" method="POST" action={{ url_for('auth.register') }}>
+          <form class="form-control border-0" method="POST" action="{{ url_for('auth.register')}}" enctype="multipart/form-data">
             <div class="card-body">
               <!-- Nome do Funcionário -->
               <div class="row mb-3">
@@ -106,17 +106,15 @@
                 </div>
               </div>
               <!-- Foto do Funcionário -->
-              <!-- OBS: Fazer com que quando for cliacado ele busque do dispositivo do funcionário -->
               <div class="row mb-3">
                 <div class="col-4">
                   <label for="senha" class="fw-bold">Foto: </label>
                 </div>
                 <div class="col-8">
-                  <input type="text" name="foto" placeholder="URL da foto" class="formStyle form-control rounded-pill">
+                  <input type="file" name="foto" accept="image/*" class="formStyle form-control rounded-pill">
                 </div>
               </div>
               <!-- Senha do Funcionário -->
-              <!-- Fazer com que a pessoa consiga ver sua senha -->
               <div class="row mb-3">
                 <div class="col-4">
                   <label for="senha" class="fw-bold">Senha: </label>
