@@ -25,21 +25,21 @@
     <!-- Itens da Sidebar - Menu Funcionario -->
     <ul class="side-menu top">
       <li class="active">
-        <a href="#">
+        <a href="#" onclick="showTabAdmin('todos_os_funcionarios')">
           <!-- Boxicon -->
           <i class='bxr  bx-group'></i>
           <span class="text">Funcionários</span>
         </a>
       </li>
       <li>
-        <a href="#">
+        <a href="#" onclick="showTabAdmin('todos_os_setores')">
           <!-- Boxicon -->
           <i class='bxr  bx-building-house'></i>
           <span class="text">Setores</span>
         </a>
       </li>
       <li>
-        <a href="#">
+        <a href="#" onclick="showTabAdmin('postar_nova_tarefa')">
           <!-- Boxicon -->
           <i class='bxr  bx-clipboard-plus'></i>
           <span class="text">Postar Tarefas</span>
@@ -123,6 +123,20 @@
           <span class="text">Download PDF</span>
         </a>
       </div>
+
+
+      <!-- Conteúdo dos dados do Administrador -->
+      <div id="todos_os_funcionarios_tab">
+        {% include 'componentes/dashboard_admin/postar_nova_tarefa.html' %}
+      </div>
+      <div id="todos_os_setores_tab" style="display: none;">
+        {% include 'componentes/dashboard_admin/todos_os_funcionarios.html' %}
+      </div>
+      <div id="postar_nova_tarefa_tab" style="display: none;">
+        {% include 'componentes/dashboard_admin/todos_os_setores.html' %}
+      </div>
+      <!-- Conteúdo dos dados do Administrador -->
+
     </main>
     <!-- MAIN -->
   </section>
@@ -131,6 +145,9 @@
 
   <!-- Forma correta de referenciar arquivo na pasta static no Flask -->
   <script src="{{ url_for('static', filename='admin_dashboard/js/script.js') }}"></script>
+
+  <!-- Script de load de componentes da formulário do administrador -->
+  <script src="{{ url_for('static', filename='admin_dashboard/js/componentes.js') }}"></script>
 </body>
 
 </html>

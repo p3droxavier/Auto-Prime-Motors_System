@@ -1,0 +1,211 @@
+<head>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Rubik+Vinyl&display=swap');
+
+    :root {
+      --poppins: 'Poppins', sans-serif;
+      --lato: 'Lato', sans-serif;
+
+      --grey: #eee;
+      --light: #F9F9F9;
+    }
+
+    /* Container centralizado */
+    .card-container {
+      max-width: 100%;
+      margin: 40px auto;
+      font-family: Arial, sans-serif;
+    }
+
+    /* Card */
+    .card {
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      background: var(--gray);
+    }
+
+    /* Header */
+    .card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: #3C91E6;
+      color: #fff;
+      padding: 15px;
+      border-top-left-radius: 10px;
+      border-top-right-radius: 10px;
+    }
+
+    .header-right .btn-close {
+      text-decoration: none;
+      color: #3C91E6;
+      background-color: #fff;
+      padding: 5px 12px;
+      border-radius: 5px;
+      font-size: 0.9rem;
+      font-weight: bold;
+    }
+
+    /* Card body */
+    .card-body {
+      padding: 20px;
+    }
+
+    /* Form rows e colunas */
+    .form-row {
+      display: flex;
+      gap: 20px;
+      margin-bottom: 15px;
+    }
+
+    .form-col {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .form-col label {
+      font-family: var(--poppins);
+      margin-bottom: 5px;
+      font-weight: 600;
+    }
+
+    .form-col input[type="text"],
+    .form-col input[type="email"],
+    .form-col input[type="tel"],
+    .form-col input[type="number"],
+    .form-col input[type="date"],
+    .form-col input[type="file"] {
+      padding: 16px 16px;
+      border: none;
+      border-radius: 36px;
+      font-size: 1rem;
+      background: var(--light);
+      outline: none;
+    }
+
+    .input_file_func {
+      border: none;
+    }
+
+    /* Botão atualizar */
+    .btn-row {
+      display: flex;
+      justify-content: center;
+    }
+
+    .btn-update {
+      width: 100%;
+      padding: 10px 25px;
+      background-color: #28a745;
+      border: none;
+      color: #fff;
+      font-size: 1rem;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    .btn-update:hover {
+      background-color: #218838;
+    }
+
+
+    /* Ajustando quebra de linha em determinado tamanho */
+    @media screen and (max-width: 800px) {
+      .form-row {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+
+<div class="card-container">
+  <div class="card">
+    <div class="card-header">
+      <div class="header-left">
+        <h5>
+          {% if funcionario.id is defined and funcionario.id > 0 %}
+          Editar Funcionário
+          {% else %}
+          Novo Funcionário
+          {% endif %}
+        </h5>
+      </div>
+      <div class="header-right">
+        <a href="{{ url_for('dashboard.dashboard') }}" class="btn-close">Fechar</a>
+      </div>
+    </div>
+
+    <div class="card-body">
+      <form method="POST" enctype="multipart/form-data">
+        <!-- Linha: Nome e Email -->
+        <div class="form-row">
+          <div class="form-col">
+            <label for="nome">Nome</label>
+            <input type="text" name="nome" id="nome" value="{{ funcionario.nome or '' }}" required>
+          </div>
+          <div class="form-col">
+            <label for="email">Email</label>
+            <input type="email" name="email" id="email" value="{{ funcionario.email or '' }}" disabled>
+          </div>
+        </div>
+
+        <!-- Linha: CPF e Cargo -->
+        <div class="form-row">
+          <div class="form-col">
+            <label for="cpf">CPF</label>
+            <input type="text" name="cpf" id="cpf" value="{{ funcionario.cpf or '' }}" disabled>
+          </div>
+          <div class="form-col">
+            <label for="cargo">Cargo</label>
+            <input type="text" name="cargo" id="cargo" value="{{ funcionario.cargo or '' }}" disabled>
+          </div>
+        </div>
+
+        <!-- Linha: Setor e Telefone -->
+        <div class="form-row">
+          <div class="form-col">
+            <label for="setor">Setor</label>
+            <input type="text" name="setor" id="setor" value="{{ funcionario.setor or '' }}" disabled>
+          </div>
+          <div class="form-col">
+            <label for="telefone">Telefone</label>
+            <input type="tel" name="telefone" id="telefone" value="{{ funcionario.telefone or '' }}" required>
+          </div>
+        </div>
+
+        <!-- Linha: Endereço e Salário -->
+        <div class="form-row">
+          <div class="form-col">
+            <label for="endereco">Endereço</label>
+            <input type="text" name="endereco" id="endereco" value="{{ funcionario.endereco or '' }}">
+          </div>
+          <div class="form-col">
+            <label for="salario">Salário</label>
+            <input type="number" name="salario" id="salario" value="{{ funcionario.salario or '' }}" disabled>
+          </div>
+        </div>
+
+        <!-- Linha: Data de Admissão e Foto -->
+        <div class="form-row">
+          <div class="form-col">
+            <label for="data_admissao">Data de Admissão</label>
+            <input type="date" name="data_admissao" id="data_admissao" value="{{ funcionario.data_admissao or '' }}"
+              disabled>
+          </div>
+          <div class="form-col">
+            <label for="foto">Foto</label>
+            <input type="file" name="foto" id="foto">
+          </div>
+        </div>
+
+        <!-- Botão -->
+        <div class="form-row btn-row">
+          {% if funcionario.id is defined and funcionario.id > 0 %}
+          <button type="submit" class="btn-update">Atualizar</button>
+          {% endif %}
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
