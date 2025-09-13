@@ -1,12 +1,17 @@
 from flask import Blueprint, render_template, request, flash, redirect, url_for, session
-from flask_login import login_user, UserMixin, logout_user
+from flask_login import login_user, UserMixin, login_required, current_user, logout_user
 from app.auth.schemas import RegisterSchema 
 from app.auth.services import cadastrar_funcionario
 from app.database.models.funcionario import Funcionario
 from werkzeug.security import check_password_hash, generate_password_hash
+import os
 
 
 auth_bp = Blueprint('auth', __name__, template_folder='templates')
+
+# Necessario para salvar as fotos
+UPLOAD_FOLDER = "app/static/uploads"
+ALLOWED_EXTENSIONS = {"png", "jpg", "jpeg"}
 
 
 # Login do admim fixo.
@@ -135,8 +140,55 @@ def login():
   return render_template('auth/login.html')
 
 
+
+# Filtro de segurança onde o usuário so pode fazer upload de arquivos permitidos.
+def allowed_file(filename):
+  return "." in filename and filename.rsplit(".", 1)[1].lower() in ALLOWED_EXTENSIONS
+
+
+@auth_bp.route("/update", methods=["GET", "POST"])
+@login_required
+def update_profile():
+  
+  if request.method == 'POST':
+    nome = request.form.get("nome")
+    telefone = request.form.get("telefone")
+    endereco = request.form.get("endereco")
+    foto = request.files.get("foto")
+    
+    
+    # Atualiza apenas campos permitidos
+    if nome:
+      current_user.nome = nome
+    if telefone:
+      current_user.telefone = telefone
+    if endereco:
+      current_user.endereco = endereco
+      
+      
+    # Upload da foto
+    if foto and allowed_file(foto.filename):#<- Verifica extensão do arquivo
+      filename = f"{current_user.id}_{foto.filename}"#<-Cria um nome pro arquivo
+      filepath = os.path.join(UPLOAD_FOLDER, filename)#<-Define um caminho
+      foto.save(filepath)
+      current_user.foto = filename
+      
+      
+    # Persiste e salva no banco de dados as alterações 
+    try:
+      from app import db
+      db.session.commit()
+      flash("Dados atualizados com sucesso!", "sucesso")
+      
+    except Exception as e:
+      flash(f"Erro ao atualizar: {str(e)}", "danger")
+      
+  return redirect(url_for("dashboard.dashboard"))
+
+
+
 # Sera chamado na dashboard para logout
 @auth_bp.route("/logout")
 def logout():
   logout_user()
-  return render_template('auth/login.html')
+  return render_template('auth/login')

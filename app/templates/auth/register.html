@@ -8,6 +8,13 @@
     integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
   <link rel="stylesheet" href="./../../static/register/css/style.css">
   <title>Cadastro</title>
+
+  <style>
+    .retornar_login a {
+      text-decoration: none;
+      color: rgb(108, 108, 108);
+    }
+  </style>
 </head>
 
 <body>
@@ -20,7 +27,8 @@
             <h4 class="fw-bold">Faça o seu cadastro com seus dados</h4>
           </div>
           <!-- Formulário -->
-          <form class="form-control border-0" method="POST" action="{{ url_for('auth.register')}}" enctype="multipart/form-data">
+          <form class="form-control border-0" method="POST" action="{{ url_for('auth.register')}}"
+            enctype="multipart/form-data">
             <div class="card-body">
               <!-- Nome do Funcionário -->
               <div class="row mb-3">
@@ -128,6 +136,9 @@
                 <div class="col-12 text-center">
                   <button type="submit" class="btn btn-primary btn-lg w-100 rounded-pill">Cadastrar</button>
                 </div>
+              </div>
+              <div class="retornar_login text-center">
+                <a href="{{ url_for('auth.login') }}">Já tem cadastro? Entre no sistema aqui!!</a>
               </div>
             </div>
           </form>

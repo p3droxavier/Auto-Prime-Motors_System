@@ -12,6 +12,13 @@
   <!-- Caminho CSS -->
   <link rel="stylesheet" href="./../../static/login/css/style.css">
   <title>Login</title>
+
+  <style>
+    .ir_para_cadastro a {
+      text-decoration: none;
+      color: rgb(108, 108, 108);
+    }
+  </style>
 </head>
 
 <body>
@@ -99,6 +106,9 @@
                 <div class="col-12 text-center">
                   <button type="submit" class="btn btn-primary btn-lg w-100 rounded-pill">Entrar</button>
                 </div>
+              </div>
+              <div class="ir_para_cadastro text-center">
+                <a href="{{ url_for('auth.register') }}">Ainda não tem cadastro? Cadastre-se!</a>
               </div>
             </div>
           </form>

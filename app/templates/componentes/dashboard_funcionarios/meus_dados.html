@@ -137,7 +137,7 @@
     </div>
 
     <div class="card-body">
-      <form method="POST" enctype="multipart/form-data">
+      <form method="POST" enctype="multipart/form-data" action="{{url_for('auth.update_profile')}}">
         <!-- Linha: Nome e Email -->
         <div class="form-row">
           <div class="form-col">
@@ -201,6 +201,7 @@
 
         <!-- Botão -->
         <div class="form-row btn-row">
+          <!-- O botão ira aparecer apos o formulário for chamado -->
           {% if funcionario.id is defined and funcionario.id > 0 %}
           <button type="submit" class="btn-update">Atualizar</button>
           {% endif %}
