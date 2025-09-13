@@ -39,7 +39,7 @@
 
     .btn-update {
       background-color: #28a745;
-      /* Verde */
+
     }
 
     .btn-update:hover {
@@ -48,7 +48,7 @@
 
     .btn-delete {
       background-color: #dc3545;
-      /* Vermelho */
+      border: none;
     }
 
     .btn-delete:hover {
@@ -95,13 +95,17 @@
             <td>
               <!-- <a href="{{ url_for('dashboard.dashboard', id=funcionario.id) }}"
                 class="btn-action btn-update">Atualizar</a> -->
-              <a href="{{ url_for('dashboard.dashboard', id=funcionario.id) }}"
-                class="btn-action btn-delete">Deletar</a>
+              <form method="POST" action="{{ url_for('admin_dashboard.delete_funcionario', id=funcionario.id) }}"
+                style="display:inline;" onsubmit="return confirm('Deseja realmente deletar este funcionário?');">
+                <button type="submit" class="btn-action btn-delete">Deletar</button>
+              </form>
             </td>
           </tr>
           {% endfor %}
         </tbody>
       </table>
     </div>
+
+
   </div>
 </div>

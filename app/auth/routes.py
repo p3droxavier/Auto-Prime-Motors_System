@@ -79,7 +79,6 @@ def register():
       # Passando a foto separadamente
       cadastrar_funcionario(validated_data, foto)
       
-      
       flash("Funcionario cadastrado com sucesso!", "success")
       return redirect(url_for('auth.login'))
     except Exception as e:

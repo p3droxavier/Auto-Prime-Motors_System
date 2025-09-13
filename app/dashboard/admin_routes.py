@@ -1,6 +1,7 @@
-from flask import Blueprint, render_template, request, abort
+from flask import Blueprint, flash, redirect, render_template, request, abort, url_for
 from flask_login import login_required, current_user
 
+from app.database import db
 from app.database.models.funcionario import Funcionario
 
 admin_dashboard_bp = Blueprint("admin_dashboard", __name__, template_folder="../templates")
@@ -20,4 +21,21 @@ def admin_dashboard():
   return render_template("dashboard/admin_dashboard.html", user=current_user, funcionarios=funcionarios)
 
 
+
+# Função de deletar funcionários
+@admin_dashboard_bp.route("/delete_funcionario/<int:id>", methods=["POST"])
+@login_required
+def delete_funcionario(id):
+  if not getattr(current_user, "is_admin", False):
+    return abort(403) # Acesso negado se não for admin
+  
+  funcionario = Funcionario.query.get_or_404(id) # Se não achar no banco, volta erro ao inves de none
+  
+  # removendo o funcionario do banco
+  
+  db.session.delete(funcionario)  
+  db.session.commit()
+  
+  flash(f"Funcionario {funcionario.nome} deletado com sucesso!", "success")
+  return redirect(url_for("admin_dashboard.admin_dashboard", user=current_user, id=funcionario))
 
