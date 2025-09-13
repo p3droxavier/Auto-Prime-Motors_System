@@ -1,1 +1,107 @@
-<p>TODOS OS FUNCIONARIOS AQUI</p>
+<head>
+  <style>
+    .table-funcionarios {
+      width: 100%;
+      border-collapse: collapse;
+      font-family: 'Poppins', sans-serif;
+      overflow: hidden;
+      border-radius: 10px 10px 0 0;
+    }
+
+    .table-funcionarios th,
+    .table-funcionarios td {
+      padding: 12px 15px;
+      text-align: left;
+      border-bottom: 1px solid #ddd;
+
+    }
+
+    .table-funcionarios th {
+      background-color: #3C91E6;
+      color: #fff;
+      font-weight: 600;
+    }
+
+    .table-funcionarios tr:hover {
+      background-color: #f2f2f2;
+    }
+
+    .btn-action {
+      padding: 6px 12px;
+      border-radius: 6px;
+      color: #fff;
+      text-decoration: none;
+      font-weight: bold;
+      margin-right: 5px;
+      font-size: 0.9rem;
+      display: inline-block;
+    }
+
+    .btn-update {
+      background-color: #28a745;
+      /* Verde */
+    }
+
+    .btn-update:hover {
+      background-color: #218838;
+    }
+
+    .btn-delete {
+      background-color: #dc3545;
+      /* Vermelho */
+    }
+
+    .btn-delete:hover {
+      background-color: #c82333;
+    }
+  </style>
+</head>
+
+<div class="card-container">
+  <div class="card">
+    <div class="card-header" style="font-size: 22px; font-family: 'Poppins', sans-serif; padding: 20px 0;">
+      <h5>Lista de Funcionários</h5>
+    </div>
+    <div class="card-body">
+      <table class="table-funcionarios">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Nome</th>
+            <th>CPF</th>
+            <th>Cargo</th>
+            <th>Setor</th>
+            <th>Data Admissão</th>
+            <th>Salário</th>
+            <th>Endereço</th>
+            <th>Telefone</th>
+            <th>Email</th>
+            <th>Ações</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for funcionario in funcionarios %}
+          <tr>
+            <td>{{ funcionario.id }}</td>
+            <td>{{ funcionario.nome }}</td>
+            <td>{{ funcionario.cpf }}</td>
+            <td>{{ funcionario.cargo }}</td>
+            <td>{{ funcionario.setor }}</td>
+            <td>{{ funcionario.data_admissao }}</td>
+            <td>{{ funcionario.salario }}</td>
+            <td>{{ funcionario.endereco }}</td>
+            <td>{{ funcionario.telefone }}</td>
+            <td>{{ funcionario.email }}</td>
+            <td>
+              <!-- <a href="{{ url_for('dashboard.dashboard', id=funcionario.id) }}"
+                class="btn-action btn-update">Atualizar</a> -->
+              <a href="{{ url_for('dashboard.dashboard', id=funcionario.id) }}"
+                class="btn-action btn-delete">Deletar</a>
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

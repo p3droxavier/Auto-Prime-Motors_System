@@ -186,7 +186,6 @@ def update_profile():
   return redirect(url_for("dashboard.dashboard"))
 
 
-
 # Sera chamado na dashboard para logout
 @auth_bp.route("/logout")
 def logout():
