@@ -191,4 +191,4 @@ def update_profile():
 @auth_bp.route("/logout")
 def logout():
   logout_user()
-  return render_template('auth/login')
+  return render_template('auth/login.html')
